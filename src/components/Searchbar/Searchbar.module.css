@@ -1,0 +1,36 @@
+/* .Searchbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.SearchForm {
+  display: flex;
+  justify-content: center;
+}
+
+.SearchFormInput {
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.SearchFormButton {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.SearchFormButton:hover {
+  background-color: #0062cc;
+} */
