@@ -1,32 +1,40 @@
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import { useSearchParams } from 'react-router-dom';
 /* import PropTypes from 'prop-types'; */
 import css from './Searchbar.module.css';
 
 const Searchbar = ({ onSubmit }) => {
   const [search, setSearch] = useState('');
   const [prevSearch, setPrevSearch] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = event => {
     setSearch(event.currentTarget.value.toLowerCase());
+    // добавляем параметр поиска в строку запроса с условием
+    if (event.currentTarget.value.toLowerCase() === '') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ query: event.currentTarget.value.toLowerCase() });
+    }
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     if (search.trim() === '') {
       // если строка пустая и мbl нажали кнопку поиска
-      toast.error('Please, fill in the input field');
+      alert('Please, fill in the input field');
       return;
     }
     if (search === prevSearch) {
       // проверка на одинаковое слово
-      toast.info('Same request');
+      alert('Same request');
       setSearch('');
       return;
     }
     onSubmit(search); // props из App которому мbl передаем state из єтого компонента в state App
     setPrevSearch(search);
     setSearch(''); // reset
+    //  setSearchParams({ query: search }); // добавляем параметр поиска в строку запроса
   };
 
   return (
@@ -38,7 +46,7 @@ const Searchbar = ({ onSubmit }) => {
           value={search}
           onChange={handleChange}
           type="text"
-          autoComplete="off"
+          autoComplete="on"
           autoFocus
         />
         <button type="submit" className={css.SearchFormButton}>
