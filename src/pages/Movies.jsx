@@ -21,7 +21,7 @@ const Movies = () => {
 
   const handleFormSubmit = query => {
     setQuery(query);
-    setMovies([]);
+    //  setMovies([]);
   };
 
   return (
