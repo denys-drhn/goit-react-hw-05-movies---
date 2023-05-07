@@ -8,6 +8,9 @@ const Searchbar = ({ onSubmit }) => {
   const [prevSearch, setPrevSearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
+  //   const movieName = searchParams.get('query');
+  //   console.log(movieName);
+
   const handleChange = event => {
     setSearch(event.currentTarget.value.toLowerCase());
     // добавляем параметр поиска в строку запроса с условием
@@ -25,16 +28,18 @@ const Searchbar = ({ onSubmit }) => {
       alert('Please, fill in the input field');
       return;
     }
+    // проверка на одинаковое слово
     if (search === prevSearch) {
-      // проверка на одинаковое слово
       alert('Same request');
       setSearch('');
       return;
     }
+
+    //  console.log(searchParams);
+
     onSubmit(search); // props из App которому мbl передаем state из єтого компонента в state App
     setPrevSearch(search);
     setSearch(''); // reset
-    //  setSearchParams({ query: search }); // добавляем параметр поиска в строку запроса
   };
 
   return (
